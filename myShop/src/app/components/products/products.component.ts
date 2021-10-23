@@ -14,6 +14,7 @@ export class ProductsComponent implements OnInit {
 
   item:products[];
   products!:products[];
+  dialogRef: any;
   constructor(private ProductService:ProductService,public dialog: MatDialog) { }
 
   ngOnInit(): void {
@@ -24,8 +25,8 @@ export class ProductsComponent implements OnInit {
       this.products = getProducts;
     })
   }
-  addToCart(){
-    this.ProductService.addToCart();
+  addToCart(id:number){
+    this.ProductService.addToCart(id);
   }
   async deleteProduct(id:number){
     try{
@@ -38,18 +39,14 @@ export class ProductsComponent implements OnInit {
   }
 
    openDialog(id:number) {
-     try{
-    this.ProductService.selectId(id).subscribe(results => {
-      this.item = results;
-      console.log(this.item)
 
-    })
-  } catch (error){
-    alert("יש בעיה עם מוצר זה, אנא נסה שוב מאוחר יותר");
-  }
+      this.dialogRef = this.dialog.open(DialogImgComponent, {
+      width: '330px',
+      height: '400px',
+      data: {
+        dataKey: id
+      }
+    });
 
-    this.dialog.open(DialogImgComponent);
-  }
-
-}
+ }}
 

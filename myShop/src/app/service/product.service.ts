@@ -1,8 +1,9 @@
-import { products } from './../models/material/products.model';
+import { products } from 'src/app/models/material/products.model';
 import { Observable, BehaviorSubject, Subject  } from 'rxjs';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { map } from 'rxjs/operators';
 
 
 @Injectable({
@@ -20,7 +21,7 @@ export class ProductService {
     return this.cart;
   }
 
-  addToCart(): BehaviorSubject<number>{
+  addToCart(id:number): BehaviorSubject<number>{
     this.cart.next(this.cart.value + 1);
     localStorage.setItem("cart", "d");
 

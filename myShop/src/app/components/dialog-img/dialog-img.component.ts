@@ -1,7 +1,9 @@
-import { products } from './../../models/material/products.model';
+import { products } from 'src/app/models/material/products.model';
 import { ProductService } from './../../service/product.service';
 import { Component, OnInit } from '@angular/core';
-import {ProductsComponent } from 'src/app/components/products/products.component';
+import { Inject } from '@angular/core';
+import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+
 @Component({
   selector: 'app-dialog-img',
   templateUrl: './dialog-img.component.html',
@@ -9,25 +11,34 @@ import {ProductsComponent } from 'src/app/components/products/products.component
 })
 export class DialogImgComponent implements OnInit {
 
-  constructor(public ProductService:ProductService) { }
+  constructor(public ProductService:ProductService,
+    @Inject(MAT_DIALOG_DATA) public data: any
+    ) { }
 
-
-  getIdOfProduct:products[];
+  getIdOfProduct:number;
+  productItem:products[];
 
   ngOnInit(): void {
-   this.getItem();
+    this.getItem(this.data.dataKey);
   }
 
-  getItem(){
-
-  }
-    /*
-    this.ProductService.selectId().subscribe(getProducts => {
-      this.getIdOfProduct = getProducts;
-      console.log(this.getIdOfProduct);
+  getItem(id:number){
+    try{
+    this.ProductService.selectId(id).subscribe(results => {
+      this.productItem = results;
+      console.log(this.productItem);
 
     })
+  } catch (error){
+    alert("יש בעיה עם מוצר זה, אנא נסה שוב מאוחר יותר");
+  }
 
 
-*/
-}
+  }
+
+
+};
+
+
+
+

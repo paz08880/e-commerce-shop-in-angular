@@ -21,7 +21,7 @@
   <button type = "button" (click) = "deleteProduct(product.id)" mat-button><i class="fas fa-trash"></i></button>
   </div>
   <div class = "left">
-    <button mat-button (click) = "addToCart()"><i class="fas fa-shopping-cart"></i> Buy Now </button>
+    <button mat-button (click) = "addToCart(product.id)"><i class="fas fa-shopping-cart"></i> Buy Now </button>
     <button mat-button><i class="fas fa-star"></i>&ThinSpace;{{product.rating.rate}} </button>
   </div>
   </mat-card-actions>
