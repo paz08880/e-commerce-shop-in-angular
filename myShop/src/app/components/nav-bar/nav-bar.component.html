@@ -1,0 +1,49 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+      <!-- Option to add user image here -->
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item [routerLink] = "['/home']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+      <a mat-list-item [routerLink] = "['products']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Products</a>
+      <a mat-list-item [routerLink] = "['contact']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Contact Us</a>
+      <a mat-list-item [routerLink] = "['panel']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Panel</a>
+    </mat-nav-list>
+
+    <div class = "social-media">
+      <li><a href = "#"><i class="fab fa-instagram"></i></a></li>
+      <li><a href = "#"><i class="fab fa-facebook"></i></a></li>
+      <li><a href = "#"><i class="fab fa-youtube"></i></a></li>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>Welcome to my Shop</span>
+      <div class = "cart">
+        <span><mat-icon>shopping_cart</mat-icon></span>
+          <div class = "counter">
+            {{cart}}
+          </div>
+
+      </div>
+       <div style = "z-index:1;" class = "listOfCart">
+        dsa
+    </div>
+      </mat-toolbar>
+    <router-outlet></router-outlet>
+    <app-footer></app-footer>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+

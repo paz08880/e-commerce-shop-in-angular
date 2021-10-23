@@ -1,0 +1,35 @@
+<div class = "container">
+<div class = "title">Our Products</div>
+<div class = "products">
+<mat-card class="example-card" *ngFor = "let product of products">
+  <mat-card-header>
+
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{product.title}}</mat-card-title>
+    <mat-card-subtitle>{{product.price | currency}}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="{{product.image}}" (click) = "openDialog(product.id)" alt="Photo of a Shiba Inu" >
+  <mat-card-content>
+    <p>
+     {{product.description}}
+    </p>
+  </mat-card-content>
+  <br>
+  <mat-card-actions>
+    <div class = "right">
+    <button mat-button ><i class="fas fa-thumbs-up"></i></button>
+  <button type = "button" (click) = "deleteProduct(product.id)" mat-button><i class="fas fa-trash"></i></button>
+  </div>
+  <div class = "left">
+    <button mat-button (click) = "addToCart()"><i class="fas fa-shopping-cart"></i> Buy Now </button>
+    <button mat-button><i class="fas fa-star"></i>&ThinSpace;{{product.rating.rate}} </button>
+  </div>
+  </mat-card-actions>
+
+
+</mat-card>
+
+</div>
+
+
+

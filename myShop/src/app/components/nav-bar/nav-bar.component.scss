@@ -1,0 +1,42 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.active{
+  font-weight: bold;
+}
+.social-media{
+  font-size:20px;
+  font-weight: bold;
+  list-style: none;
+  position: absolute;
+  display:flex;
+  width:100%;
+  bottom:30px;
+  cursor:pointer;
+  justify-content: space-around;
+}
+.social-media li a:hover{
+  color:darkblue;
+}
+.cart{
+  right:40px;
+  cursor:pointer;
+  top:20px;
+  position: absolute;
+  display: flex;
+
+}
